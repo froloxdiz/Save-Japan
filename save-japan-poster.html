@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Japan Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Butcherman&family=Eater&family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: #1a0b2e;
+            color: #f0f0f0;
+        }
+        
+        /* navigation */
+        .navbar {
+            background: linear-gradient(135deg, #2d1b3d 0%, #1a0b2e 100%);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3);
+            border-bottom: 3px solid #ff6b00;
+        }
+        
+        .nav-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: #ff6b00;
+            font-size: 28px;
+            font-weight: bold;
+            font-family: 'Fredericka the Great', cursive;
+            text-shadow: 2px 2px 8px rgba(255, 107, 0, 0.6);
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            color: #9d4edd;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            color: #ffa500;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-family: 'Fredericka the Great', cursive;
+            font-size: 15px;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 107, 0, 0.2);
+            color: #ff6b00;
+            transform: scale(1.05);
+        }
+        
+        .nav-links a.active {
+            background: #ff6b00;
+            color: #1a0b2e;
+        }
+        
+        /* hero */
+        .hero {
+            background: linear-gradient(rgba(26, 11, 46, 0.8), rgba(45, 27, 61, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%231a0b2e" width="1200" height="400"/></svg>');
+            background-size: cover;
+            height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '🎃👻🦇🕷️';
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.05;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .hero-text h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+            font-family: 'Creepster', cursive;
+            color: #ff6b00;
+            text-shadow: 4px 4px 12px rgba(255, 107, 0, 0.7),
+                         0 0 30px rgba(157, 78, 221, 0.5);
+            letter-spacing: 4px;
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { text-shadow: 4px 4px 12px rgba(255, 107, 0, 0.7), 0 0 30px rgba(157, 78, 221, 0.5); }
+            50% { text-shadow: 4px 4px 20px rgba(255, 107, 0, 1), 0 0 50px rgba(157, 78, 221, 0.8); }
+        }
+        
+        .hero-text p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #ffa500;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+        }
+        
+        .hero-btn {
+            background: linear-gradient(135deg, #ff6b00, #9d4edd);
+            color: white;
+            padding: 14px 35px;
+            border: 2px solid #ffa500;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Fredericka the Great', cursive;
+            box-shadow: 0 5px 20px rgba(255, 107, 0, 0.4);
+        }
+        
+        .hero-btn:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 8px 30px rgba(255, 107, 0, 0.7);
+        }
+        
+        /* container */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .section.show {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        h2 {
+            font-size: 48px;
+            color: #ff6b00;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #9d4edd;
+            padding-bottom: 15px;
+            font-family: 'Butcherman', cursive;
+            text-shadow: 3px 3px 10px rgba(255, 107, 0, 0.5);
+            letter-spacing: 3px;
+        }
+        
+        h3 {
+            font-family: 'Fredericka the Great', cursive;
+        }
+        
+        /* about */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #2d1b3d, #1a0b2e);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3);
+            border: 2px solid #ff6b00;
+        }
+        
+        .info-box h3 {
+            color: #ffa500;
+            margin-bottom: 15px;
+            font-size: 26px;
+        }
+        
+        .info-box p {
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 12px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #ff6b00, #9d4edd);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 6px 25px rgba(255, 107, 0, 0.4);
+            border: 2px solid #ffa500;
+            transition: 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px) rotate(-2deg);
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-family: 'Creepster', cursive;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            font-family: 'Georgia', serif;
+        }
+        
+        /* problem cards */
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, #2d1b3d, #1a0b2e);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(157, 78, 221, 0.3);
+            border: 2px solid #9d4edd;
+            transition: 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px) rotate(2deg);
+            box-shadow: 0 8px 30px rgba(255, 107, 0, 0.5);
+            border-color: #ff6b00;
+        }
+        
+        .card-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+        
+        .card h3 {
+            color: #ffa500;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .card p {
+            color: #d0d0d0;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        
+        /* solution */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .before, .after {
+            background: linear-gradient(135deg, #2d1b3d, #1a0b2e);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(157, 78, 221, 0.3);
+            text-align: center;
+            border: 2px solid #9d4edd;
+        }
+        
+        .before h3 {
+            color: #888;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .after h3 {
+            color: #ff6b00;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .house-img {
+            width: 100%;
+            height: 220px;
+            background: #0d0620;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 90px;
+            margin-bottom: 15px;
+            border: 2px solid #9d4edd;
+        }
+        
+        .after .house-img {
+            background: linear-gradient(135deg, #2d1b3d, #0d0620);
+            position: relative;
+            overflow: hidden;
+            border-color: #ff6b00;
+        }
+        
+        .after .house-img::after {
+            content: '✨';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 35px;
+            animation: sparkle 2s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .benefit {
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.2), rgba(157, 78, 221, 0.2));
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #ff6b00;
+            transition: 0.3s;
+        }
+        
+        .benefit:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(255, 107, 0, 0.4);
+        }
+        
+        .benefit h4 {
+            color: #ffa500;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .benefit p {
+            color: #e0e0e0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* projects */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .project {
+            background: linear-gradient(135deg, #2d1b3d, #1a0b2e);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(157, 78, 221, 0.3);
+            border: 2px solid #9d4edd;
+            transition: 0.3s;
+        }
+        
+        .project:hover {
+            transform: translateY(-10px) rotate(-1deg);
+            box-shadow: 0 10px 35px rgba(255, 107, 0, 0.5);
+            border-color: #ff6b00;
+        }
+        
+        .project-img {
+            height: 200px;
+            background: linear-gradient(135deg, #0d0620, #2d1b3d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+        }
+        
+        .project-img::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 107, 0, 0.05) 10px,
+                rgba(255, 107, 0, 0.05) 20px
+            );
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            color: #ffa500;
+            margin-bottom: 8px;
+            font-size: 21px;
+        }
+        
+        .location {
+            color: #9d4edd;
+            font-size: 13px;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+        
+        .project-info p {
+            color: #d0d0d0;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .status {
+            background: linear-gradient(135deg, #ff6b00, #9d4edd);
+            color: white;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            font-family: 'Fredericka the Great', cursive;
+            border: 1px solid #ffa500;
+        }
+        
+        /* contact */
+        .contact-wrapper {
+            background: linear-gradient(135deg, #2d1b3d, #1a0b2e);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3);
+            border: 2px solid #ff6b00;
+            max-width: 700px;
+            margin: 30px auto;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .contact-item {
+            padding: 15px;
+        }
+        
+        .contact-item-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-item h4 {
+            color: #ffa500;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .contact-item p {
+            color: #d0d0d0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .form-field {
+            margin-bottom: 20px;
+        }
+        
+        .form-field label {
+            display: block;
+            color: #ffa500;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-family: 'Fredericka the Great', cursive;
+        }
+        
+        .form-field input,
+        .form-field textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #9d4edd;
+            border-radius: 8px;
+            font-size: 15px;
+            background: rgba(13, 6, 32, 0.6);
+            color: #f0f0f0;
+        }
+        
+        .form-field input:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: #ff6b00;
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.3);
+        }
+        
+        .form-field textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ff6b00, #9d4edd);
+            color: white;
+            padding: 14px;
+            border: 2px solid #ffa500;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Fredericka the Great', cursive;
+        }
+        
+        .submit-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 30px rgba(255, 107, 0, 0.5);
+        }
+        
+        /* footer */
+        footer {
+            background: linear-gradient(135deg, #2d1b3d, #1a0b2e);
+            color: #ffa500;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+            border-top: 3px solid #ff6b00;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+        }
+        
+        /* responsive */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 48px;
+            }
+            
+            .about-grid,
+            .comparison,
+            .problem-cards,
+            .benefits,
+            .projects {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">Save<span>Japan</span> 🎃</div>
+            <div class="nav-links">
+                <a href="#" class="nav-link active" data-section="hero">Home</a>
+                <a href="#" class="nav-link" data-section="about">About</a>
+                <a href="#" class="nav-link" data-section="problem">Problem</a>
+                <a href="#" class="nav-link" data-section="solution">Solution</a>
+                <a href="#" class="nav-link" data-section="projects">Projects</a>
+                <a href="#" class="nav-link" data-section="contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div id="hero" class="hero show">
+        <div class="hero-text">
+            <h1>SAVE JAPAN 👻</h1>
+            <p>Turning Abandoned Houses into Spooky Tourist Spots!</p>
+            <button class="hero-btn" onclick="showSection('solution')">Discover More 🦇</button>
+        </div>
+    </div>
+
+    <!-- About -->
+    <div id="about" class="container section">
+        <h2>About Our Project 🕷️</h2>
+        <div class="about-grid">
+            <div class="info-box">
+                <h3>Our Mission 🎃</h3>
+                <p>We're students who want to save Japan's abandoned houses! There are millions of empty homes across the country, and we have a cool idea to turn them into haunted house attractions.</p>
+                <p>By combining Japanese ghost stories with tourism, we can help rural areas make money again and preserve old buildings that would otherwise fall apart.</p>
+            </div>
+            <div class="info-box">
+                <h3>Why This Matters 🦇</h3>
+                <p>Japan has over 8 million abandoned houses called "akiya". Many are in beautiful rural areas that are losing population.</p>
+                <p>Our plan creates jobs, brings tourists, and saves historic buildings. Plus, Japan has awesome ghost folklore that tourists love!</p>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">8.5M</div>
+                <div class="stat-label">Empty Houses</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Projects Planned</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">500</div>
+                <div class="stat-label">Jobs Created</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">100K</div>
+                <div class="stat-label">Visitors/Year</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Problem -->
+    <div id="problem" class="container section">
+        <h2>The Problem 🏚️</h2>
+        <div class="problem-cards">
+            <div class="card">
+                <div class="card-icon">🏚️</div>
+                <h3>Too Many Empty Houses</h3>
+                <p>Over 8.5 million houses are abandoned in Japan as young people move to big cities.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">👴</div>
+                <h3>Aging Population</h3>
+                <p>Elderly owners pass away and nobody wants to take care of old family homes.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💰</div>
+                <h3>No Money in Rural Areas</h3>
+                <p>Empty houses make property values drop and towns lose income.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🏛️</div>
+                <h3>Losing History</h3>
+                <p>Beautiful traditional buildings are crumbling and historical architecture is disappearing.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚠️</div>
+                <h3>Safety Issues</h3>
+                <p>Old broken buildings are dangerous and can attract crime.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌾</div>
+                <h3>Ghost Towns</h3>
+                <p>Entire villages are dying out with no shops or people left.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Solution -->
+    <div id="solution" class="container section">
+        <h2>Our Solution 🎃</h2>
+        
+        <div class="comparison">
+            <div class="before">
+                <h3>BEFORE 😢</h3>
+                <div class="house-img">🏚️</div>
+                <p>Broken, abandoned, wasting away. Nobody wants them and they hurt the community.</p>
+            </div>
+            <div class="after">
+                <h3>AFTER 🎉</h3>
+                <div class="house-img">👻</div>
+                <p>Exciting tourist attraction! Bringing money and life back to towns.</p>
+            </div>
+        </div>
+        
+        <div class="benefits">
+            <div class="benefit">
+                <h4>💰 Make Money</h4>
+                <p>Ticket sales and tourists spending money in local shops and restaurants.</p>
+            </div>
+            <div class="benefit">
+                <h4>👥 Create Jobs</h4>
+                <p>Actors, tour guides, maintenance workers all needed!</p>
+            </div>
+            <div class="benefit">
+                <h4>🏛️ Save History</h4>
+                <p>Fix up old buildings instead of letting them rot.</p>
+            </div>
+            <div class="benefit">
+                <h4>🌏 Attract Tourists</h4>
+                <p>People from all over the world love Japanese ghost stories.</p>
+            </div>
+            <div class="benefit">
+                <h4>🎭 Share Culture</h4>
+                <p>Teach visitors about yokai and traditional folklore.</p>
+            </div>
+            <div class="benefit">
+                <h4>🏘️ Revive Towns</h4>
+                <p>Bring energy and people back to dying villages.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects -->
+    <div id="projects" class="container section">
+        <h2>Our Projects 🦇</h2>
+        <div class="projects">
+            <div class="project">
+                <div class="project-img">👻</div>
+                <div class="project-info">
+                    <h3>The Yūrei Manor</h3>
+                    <p class="location">📍 Kyoto</p>
+                    <p>Old samurai house turned into interactive ghost experience with traditional Japanese ghost stories.</p>
+                    <span class="status">Opening 2026</span>
+                </div>
+            </div>
+            
+            <div class="project">
+                <div class="project-img">🦇</div>
+                <div class="project-info">
+                    <h3>Yokai Village</h3>
+                    <p class="location">📍 Gifu</p>
+                    <p>Whole abandoned village where each house represents a different Japanese monster!</p>
+                    <span class="status">In Progress</span>
+                </div>
+            </div>
+            
+            <div class="project">
+                <div class="project-img">🌙</div>
+                <div class="project-info">
+                    <h3>Midnight Inn</h3>
+                    <p class="location">📍 Nagano</p>
+                    <p>Stay overnight in a haunted ryokan with spooky activities all night long.</p>
+                    <span class="status">Opening 2025</span>
+                </div>
+            </div>
+            
+            <div class="project">
+                <div class="project-img">🎃</div>
+                <div class="project-info">
+                    <h3>Cursed Farmhouse</h3>
+                    <p class="location">📍 Akita</p>
+                    <p>200 year old farm with ghost stories about rural Japan and seasonal horror events.</p>
+                    <span class="status">Planning</span>
+                </div>
+            </div>
+            
+            <div class="project">
+                <div class="project-img">⛩️</div>
+                <div class="project-info">
+                    <h3>Shrine of Shadows</h3>
+                    <p class="location">📍 Shimane</p>
+                    <p>Abandoned shrine with spiritual horror based on Shinto mythology.</p>
+                    <span class="status">Planning</span>
+                </div>
+            </div>
+            
+            <div class="project">
+                <div class="project-img">🌸</div>
+                <div class="project-info">
+                    <h3>Cherry Blossom Haunt</h3>
+                    <p class="location">📍 Fukushima</p>
+                    <p>Beautiful estate with sakura trees - gorgeous but spooky!</p>
+                    <span class="status">Planning</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div id="contact" class="container section">
+        <h2>Get in Touch 📧</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-item-icon">📧</div>
+                    <h4>Email</h4>
+                    <p>info@savejapan.com</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📞</div>
+                    <h4>Phone</h4>
+                    <p>+81 3-1234-5678</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <h4>Location</h4>
+                    <p>Tokyo, Japan</p>
+                </div>
+            </div>
+            
+            <form id="contactForm">
+                <div class="form-field">
+                    <label>Name</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-field">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-field">
+                    <label>Subject</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-field">
+                    <label>Message</label>
+                    <textarea required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message 🎃</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>👻 © 2025 Save Japan Project - Student Initiative 🦇</p>
+    </footer>
+
+    <script>
+        // navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+        const hero = document.getElementById('hero');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                const sectionId = this.getAttribute('data-section');
+                showSection(sectionId);
+            });
+        });
+        
+        function showSection(sectionId) {
+            sections.forEach(s => s.classList.remove('show'));
+            hero.classList.remove('show');
+            
+            if (sectionId === 'hero') {
+                hero.classList.add('show');
+            } else {
+                document.getElementById(sectionId).classList.add('show');
+            }
+            
+            window.scrollTo(0, 0);
+        }
+        
+        // form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thanks for your message! We will get back to you soon. 👻');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
