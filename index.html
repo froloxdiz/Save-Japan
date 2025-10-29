@@ -49,12 +49,6 @@
             gap: 12px;
         }
         
-        .logo img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-        }
-        
         /* Team section styles */
         .team-section {
             margin-top: 80px;
@@ -841,17 +835,30 @@
     <nav>
         <div class="nav-wrapper">
             <div class="logo">
-                <img src="https://i.imgur.com/8kH3Zxr.png" alt="Save Japan Logo">
+                <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Torii gate -->
+                    <rect x="20" y="35" width="8" height="55" fill="#ffffff"/>
+                    <rect x="72" y="35" width="8" height="55" fill="#ffffff"/>
+                    <path d="M 10 30 Q 15 25 50 25 Q 85 25 90 30 L 90 38 Q 85 33 50 33 Q 15 33 10 38 Z" fill="#ffffff"/>
+                    <rect x="15" y="50" width="70" height="6" fill="#ffffff"/>
+                    <!-- Red sun -->
+                    <circle cx="50" cy="60" r="18" fill="#ff6b00" opacity="1"/>
+                    <path d="M 35 65 Q 50 68 65 65" stroke="#ff6b00" stroke-width="2" fill="none" opacity="0.6"/>
+                    <path d="M 38 62 Q 50 64 62 62" stroke="#ff6b00" stroke-width="1.5" fill="none" opacity="0.4"/>
+                    <!-- Birds -->
+                    <path d="M 45 55 Q 47 54 49 55" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.7"/>
+                    <path d="M 51 58 Q 53 57 55 58" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.7"/>
+                </svg>
                 <span>SAVE JAPAN</span>
             </div>
-            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+            <button class="menu-btn" id="menuBtn">☰</button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#" class="active" data-section="hero" onclick="closeMenu()">Home</a></li>
-                <li><a href="#" data-section="about" onclick="closeMenu()">About</a></li>
-                <li><a href="#" data-section="problem" onclick="closeMenu()">Problem</a></li>
-                <li><a href="#" data-section="solution" onclick="closeMenu()">Solution</a></li>
-                <li><a href="#" data-section="projects" onclick="closeMenu()">Projects</a></li>
-                <li><a href="#" data-section="contact" onclick="closeMenu()">Contact</a></li>
+                <li><a href="#" class="nav-link active" data-section="hero">Home</a></li>
+                <li><a href="#" class="nav-link" data-section="about">About</a></li>
+                <li><a href="#" class="nav-link" data-section="problem">Problem</a></li>
+                <li><a href="#" class="nav-link" data-section="solution">Solution</a></li>
+                <li><a href="#" class="nav-link" data-section="projects">Projects</a></li>
+                <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
             </ul>
         </div>
     </nav>
