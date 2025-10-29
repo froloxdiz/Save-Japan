@@ -19,12 +19,12 @@
             overflow-x: hidden;
         }
         
-        /* Nav */
+        /* Navigation */
         nav {
             position: fixed;
             width: 100%;
             top: 0;
-            background: rgba(20, 20, 20, 0.95);
+            background: rgba(30, 30, 30, 0.95);
             backdrop-filter: blur(10px);
             padding: 20px 5%;
             z-index: 1000;
@@ -49,116 +49,9 @@
             gap: 12px;
         }
         
-        /* Team section styles */
-        .team-section {
-            margin-top: 80px;
-            padding: 60px 40px;
-            background: rgba(255, 107, 0, 0.05);
-            border: 1px solid rgba(255, 107, 0, 0.2);
-        }
-        
-        .team-title {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 42px;
-            color: #ff6b00;
-            text-align: center;
-            margin-bottom: 50px;
-            letter-spacing: 3px;
-        }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .team-member {
-            background: #0a0a0a;
-            border: 2px solid rgba(255, 107, 0, 0.3);
-            padding: 30px 20px;
-            text-align: center;
-            transition: 0.3s;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .team-member::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .team-member:hover::before {
-            left: 100%;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-10px) scale(1.05);
-            border-color: #ff6b00;
-            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.4);
-        }
-        
-        .member-emoji {
-            display: block;
-            font-size: 48px;
-            margin-bottom: 15px;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .team-member:nth-child(2) .member-emoji {
-            animation-delay: 0.5s;
-        }
-        
-        .team-member:nth-child(3) .member-emoji {
-            animation-delay: 1s;
-        }
-        
-        .team-member:nth-child(4) .member-emoji {
-            animation-delay: 1.5s;
-        }
-        
-        .team-member:nth-child(5) .member-emoji {
-            animation-delay: 2s;
-        }
-        
-        .team-member:nth-child(6) .member-emoji {
-            animation-delay: 2.5s;
-        }
-        
-        .team-member:nth-child(7) .member-emoji {
-            animation-delay: 3s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .member-name {
-            display: block;
-            font-family: 'Inter', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: #ff6b00;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        
-        .menu-btn {
-            display: none;
-        }
-        
         .nav-menu {
             display: flex;
-            gap: 40px;
+            gap: 30px;
             list-style: none;
         }
         
@@ -170,34 +63,36 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: 0.3s;
-            position: relative;
+            cursor: pointer;
         }
         
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #ff6b00;
-            transition: 0.3s;
+        .nav-menu a:hover {
+            color: #ff6b00;
         }
         
-        .nav-menu a:hover::after,
-        .nav-menu a.active::after {
-            width: 100%;
+        .nav-menu a.active {
+            color: #ff6b00;
         }
         
-        /* Hero with real image placeholder */
-        .hero {
+        /* Page sections */
+        .page-section {
+            display: none;
+            min-height: 100vh;
+        }
+        
+        .page-section.active {
+            display: block;
+        }
+        
+        /* Hero */
+        #hero {
             height: 100vh;
-            position: relative;
             display: flex;
             align-items: center;
             background: 
-                linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8)),
-                url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=1600') center/cover;
+                linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8)),
+                url('https://images.unsplash.com/photo-1509481200466-c79a98099875?w=1600') center/cover;
+            position: relative;
         }
         
         .hero-content {
@@ -234,7 +129,6 @@
             max-width: 600px;
             margin-bottom: 40px;
             color: #ddd;
-            font-weight: 300;
         }
         
         .cta-btn {
@@ -248,43 +142,18 @@
             letter-spacing: 2px;
             cursor: pointer;
             transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            transition: 0.3s;
-            z-index: -1;
-        }
-        
-        .cta-btn:hover::before {
-            left: 0;
         }
         
         .cta-btn:hover {
-            color: #ff6b00;
+            background: #ff8c00;
+            transform: translateY(-3px);
         }
         
-        /* Section common styles */
-        section {
-            display: none;
-            padding: 100px 5%;
-        }
-        
-        section.active {
-            display: block;
-        }
-        
-        .section-wrapper {
+        /* Content sections */
+        .container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 120px 5% 80px;
         }
         
         .section-title {
@@ -300,15 +169,14 @@
             font-size: 18px;
             color: #999;
             margin-bottom: 60px;
-            max-width: 700px;
         }
         
-        /* About section - image + text layout */
+        /* About */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
-            margin-top: 60px;
+            margin-top: 40px;
         }
         
         .about-image {
@@ -316,17 +184,6 @@
             background: 
                 linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)),
                 url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800') center/cover;
-            position: relative;
-        }
-        
-        .about-image::after {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            bottom: 20px;
-            left: 20px;
-            border: 2px solid rgba(255, 107, 0, 0.5);
         }
         
         .about-content h3 {
@@ -343,6 +200,60 @@
             margin-bottom: 20px;
         }
         
+        /* Team section */
+        .team-section {
+            margin-top: 80px;
+            padding: 60px 40px;
+            background: rgba(255, 107, 0, 0.05);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+        }
+        
+        .team-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 42px;
+            color: #ff6b00;
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 3px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .team-member {
+            background: #0a0a0a;
+            border: 2px solid rgba(255, 107, 0, 0.3);
+            padding: 30px 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b00;
+        }
+        
+        .member-emoji {
+            display: block;
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .member-name {
+            display: block;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff6b00;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* Stats */
         .stats-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -359,8 +270,8 @@
         }
         
         .stat:hover {
-            background: rgba(255, 107, 0, 0.1);
             transform: translateY(-5px);
+            background: rgba(255, 107, 0, 0.1);
         }
         
         .stat-number {
@@ -378,7 +289,7 @@
             letter-spacing: 1px;
         }
         
-        /* Problem section - card layout with images */
+        /* Problem cards */
         .problem-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -405,36 +316,6 @@
                 url('https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=600') center/cover;
         }
         
-        .problem-card:nth-child(2) .problem-img {
-            background: 
-                linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-                url('https://images.unsplash.com/photo-1464207687429-7505649dae38?w=600') center/cover;
-        }
-        
-        .problem-card:nth-child(3) .problem-img {
-            background: 
-                linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-                url('https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?w=600') center/cover;
-        }
-        
-        .problem-card:nth-child(4) .problem-img {
-            background: 
-                linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-                url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600') center/cover;
-        }
-        
-        .problem-card:nth-child(5) .problem-img {
-            background: 
-                linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-                url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600') center/cover;
-        }
-        
-        .problem-card:nth-child(6) .problem-img {
-            background: 
-                linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-                url('https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=600') center/cover;
-        }
-        
         .problem-content {
             padding: 30px;
         }
@@ -452,7 +333,7 @@
             color: #aaa;
         }
         
-        /* Solution - big before/after */
+        /* Solution */
         .comparison-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -462,7 +343,6 @@
         
         .compare-box {
             position: relative;
-            overflow: hidden;
         }
         
         .compare-img {
@@ -470,7 +350,6 @@
             background: 
                 linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
                 url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800') center/cover;
-            position: relative;
         }
         
         .compare-box.after .compare-img {
@@ -540,7 +419,7 @@
             line-height: 1.6;
         }
         
-        /* Projects - asymmetric layout */
+        /* Projects */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -555,10 +434,6 @@
             transition: 0.3s;
         }
         
-        .project-card:first-child {
-            grid-column: span 2;
-        }
-        
         .project-card:hover {
             border-color: #ff6b00;
             transform: scale(1.02);
@@ -570,36 +445,6 @@
                 linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)),
                 url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800') center/cover;
             position: relative;
-        }
-        
-        .project-card:nth-child(2) .project-image {
-            background: 
-                linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)),
-                url('https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800') center/cover;
-        }
-        
-        .project-card:nth-child(3) .project-image {
-            background: 
-                linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)),
-                url('https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=800') center/cover;
-        }
-        
-        .project-card:nth-child(4) .project-image {
-            background: 
-                linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)),
-                url('https://images.unsplash.com/photo-1464207687429-7505649dae38?w=800') center/cover;
-        }
-        
-        .project-card:nth-child(5) .project-image {
-            background: 
-                linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)),
-                url('https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?w=800') center/cover;
-        }
-        
-        .project-card:nth-child(6) .project-image {
-            background: 
-                linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)),
-                url('https://images.unsplash.com/photo-1509633865534-848839574388?w=800') center/cover;
         }
         
         .project-status {
@@ -747,22 +592,13 @@
             .nav-menu {
                 gap: 15px;
                 flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav-menu a {
                 font-size: 12px;
-                padding: 0;
             }
             
             .about-grid,
             .comparison-container,
             .projects-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .project-card:first-child {
-                grid-column: span 1;
             }
             
             .stats-row,
@@ -779,43 +615,42 @@
         <div class="nav-wrapper">
             <div class="logo">
                 <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Torii gate -->
                     <rect x="20" y="35" width="8" height="55" fill="#ffffff"/>
                     <rect x="72" y="35" width="8" height="55" fill="#ffffff"/>
                     <path d="M 10 30 Q 15 25 50 25 Q 85 25 90 30 L 90 38 Q 85 33 50 33 Q 15 33 10 38 Z" fill="#ffffff"/>
                     <rect x="15" y="50" width="70" height="6" fill="#ffffff"/>
-                    <!-- Red sun -->
                     <circle cx="50" cy="60" r="18" fill="#ff6b00" opacity="1"/>
                     <path d="M 35 65 Q 50 68 65 65" stroke="#ff6b00" stroke-width="2" fill="none" opacity="0.6"/>
                     <path d="M 38 62 Q 50 64 62 62" stroke="#ff6b00" stroke-width="1.5" fill="none" opacity="0.4"/>
-                    <!-- Birds -->
                     <path d="M 45 55 Q 47 54 49 55" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.7"/>
                     <path d="M 51 58 Q 53 57 55 58" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.7"/>
                 </svg>
                 <span>SAVE JAPAN</span>
             </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#" class="nav-link active" data-section="hero">Home</a></li>
-                <li><a href="#" class="nav-link" data-section="about">About</a></li>
-                <li><a href="#" class="nav-link" data-section="problem">Problem</a></li>
-                <li><a href="#" class="nav-link" data-section="solution">Solution</a></li>
-                <li><a href="#" class="nav-link" data-section="projects">Projects</a></li>
-                <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+            <ul class="nav-menu">
+                <li><a onclick="showPage('hero')">Home</a></li>
+                <li><a onclick="showPage('about')">About</a></li>
+                <li><a onclick="showPage('problem')">Problem</a></li>
+                <li><a onclick="showPage('solution')">Solution</a></li>
+                <li><a onclick="showPage('projects')">Projects</a></li>
+                <li><a onclick="showPage('contact')">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <div id="hero" class="hero active">
+    <!-- Hero -->
+    <div id="hero" class="page-section active">
         <div class="hero-content">
             <span class="hero-tag">Student Initiative</span>
             <h1>SAVE<br>JAPAN</h1>
             <p>Transforming 8.5 million abandoned houses into thriving haunted tourist attractions across rural Japan</p>
-            <button class="cta-btn" onclick="showSection('about')">EXPLORE PROJECT</button>
+            <button class="cta-btn" onclick="showPage('about')">EXPLORE PROJECT</button>
         </div>
     </div>
 
-    <section id="about">
-        <div class="section-wrapper">
+    <!-- About -->
+    <div id="about" class="page-section">
+        <div class="container">
             <h2 class="section-title">About</h2>
             <p class="section-subtitle">Our mission to revitalize Japan's forgotten spaces</p>
             
@@ -883,10 +718,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="problem">
-        <div class="section-wrapper">
+    <!-- Problem -->
+    <div id="problem" class="page-section">
+        <div class="container">
             <h2 class="section-title">The Problem</h2>
             <p class="section-subtitle">Understanding Japan's akiya crisis</p>
             
@@ -935,10 +771,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="solution">
-        <div class="section-wrapper">
+    <!-- Solution -->
+    <div id="solution" class="page-section">
+        <div class="container">
             <h2 class="section-title">The Solution</h2>
             <p class="section-subtitle">Haunted house tourism as rural revitalization</p>
             
@@ -988,14 +825,35 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="projects">
-        <div class="section-wrapper">
+    <!-- Projects -->
+    <div id="projects" class="page-section">
+        <div class="container">
             <h2 class="section-title">Projects</h2>
             <p class="section-subtitle">Our haunted house locations across Japan</p>
             
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <span class="project-status">Opening
+                        <span class="project-status">Opening 2026</span>
+                    </div>
+                    <div class="project-info">
+                        <p class="project-location">📍 Kyoto</p>
+                        <h3>The Yūrei Manor</h3>
+                        <p>Old samurai house turned into interactive ghost experience with traditional Japanese ghost stories.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <span class="project-status">In Progress</span>
+                    </div>
+                    <div class="project-info">
+                        <p class="project-location">📍 Gifu</p>
+                        <h3>Yokai Village</h3>
+                        <p>Whole abandoned village where each house represents a different Japanese monster!</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
