@@ -154,23 +154,6 @@
         
         .menu-btn {
             display: none;
-            background: none;
-            border: 2px solid #ff6b00;
-            color: #ff6b00;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: 0.3s;
-            z-index: 1001;
-        }
-        
-        .menu-btn:hover {
-            background: rgba(255, 107, 0, 0.2);
-        }
-        
-        .menu-btn:active {
-            transform: scale(0.95);
         }
         
         .nav-menu {
@@ -761,55 +744,15 @@
         
         /* Mobile */
         @media (max-width: 768px) {
-            .menu-btn {
-                display: block;
-            }
-            
-            .nav-links a::after {
-                display: none;
-            }
-            
             .nav-menu {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: 100vh;
-                background: rgba(20, 20, 20, 0.98);
-                flex-direction: column;
-                padding: 100px 30px 40px;
-                gap: 10px;
-                transition: left 0.3s ease;
-                border-right: 2px solid #ff6b00;
-                overflow-y: auto;
-                z-index: 999;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-menu li {
-                width: 100%;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .nav-menu a {
-                display: block;
-                font-size: 18px;
-                padding: 15px 20px;
-                background: rgba(255, 107, 0, 0.1);
-                border: 1px solid rgba(255, 107, 0, 0.3);
-                border-radius: 5px;
-                text-align: center;
-                transition: 0.3s;
-            }
-            
-            .nav-menu a:hover,
-            .nav-menu a.active {
-                background: #ff6b00;
-                color: #000;
-                transform: translateX(10px);
+                font-size: 12px;
+                padding: 0;
             }
             
             .about-grid,
@@ -851,7 +794,6 @@
                 </svg>
                 <span>SAVE JAPAN</span>
             </div>
-            <button class="menu-btn" id="menuBtn">☰</button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#" class="nav-link active" data-section="hero">Home</a></li>
                 <li><a href="#" class="nav-link" data-section="about">About</a></li>
